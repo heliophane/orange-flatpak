@@ -11,6 +11,8 @@ The current method of installing Orange on Linux is difficult, and not very intu
 - I, and by extension this repo are not affiliated with the main Orange3 Project. Much love to the original devs for this great tool though! <3
 
 ### Orange's Repos
-[https://github.com/biolab/orange3]
-[https://github.com/biolab/orange-canvas-core]
-[https://github.com/biolab/orange-widget-base]
+https://github.com/biolab/orange3
+
+https://github.com/biolab/orange-canvas-core
+
+https://github.com/biolab/orange-widget-base
