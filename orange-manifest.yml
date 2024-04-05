@@ -1,0 +1,42 @@
+# Name of the application
+app-name: com.orangedatamining
+
+# Version of the manifest
+version: 1
+
+# Runtime to be used for the application
+runtime: org.freedesktop.Platform.x86_64-1.8
+
+# Dependencies required by the application
+build-dependencies:
+  - org.freedesktop.Platform.x86_64
+  - python3
+  - PyQt5>=5.12,!=5.15.1  # Add the specific version requirement here
+  - PyQtWebEngine>=5.12
+
+
+
+
+# Steps to build and install the application
+build:
+build:
+  commands:
+    # Download source code
+    - git clone https://github.com/biolab/orange-canvas-core.git
+    - git clone https://github.com/biolab/orange-widget-base.git
+    - git clone https://github.com/biolab/orange3.git
+
+    # Configure build environment (if needed)
+    # ... (add commands here)
+
+    # Build orange-canvas-core
+    # ... (add compilation commands here)
+
+    # Build orange-widget-base
+    # ... (add compilation commands here)
+
+    # Build orange3
+    # ... (add compilation commands here)
+
+    # Install compiled libraries and executables
+    # ... (add cp commands here)
