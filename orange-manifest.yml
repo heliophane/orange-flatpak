@@ -5,20 +5,17 @@ app-name: com.orangedatamining
 version: 1
 
 # Runtime to be used for the application
-runtime: org.freedesktop.Platform.x86_64-1.8
+runtime: org.freedesktop.Platform
 
 # Dependencies required by the application
 build-dependencies:
   - org.freedesktop.Platform.x86_64
   - python3
-  - PyQt5>=5.12,!=5.15.1  # Add the specific version requirement here
-  - PyQtWebEngine>=5.12
-
-
-
+  - PyQt5  # Specific PyQt5 version
+  - PyQtWebEngine
+  # Add any additional dependencies from requirements-pyqt.txt
 
 # Steps to build and install the application
-build:
 build:
   commands:
     # Download source code
@@ -26,17 +23,26 @@ build:
     - git clone https://github.com/biolab/orange-widget-base.git
     - git clone https://github.com/biolab/orange3.git
 
-    # Configure build environment (if needed)
-    # ... (add commands here)
+    # Install dependencies within the Flatpak environment (replace with actual commands if needed)
+    - pip install --no-cache-dir -r requirements-pyqt.txt  # Install dependencies from requirements-pyqt.txt
 
     # Build orange-canvas-core
-    # ... (add compilation commands here)
+    - cd orange-canvas-core
+    - python setup.py install --single-version-externally-managed --record installed.txt
 
     # Build orange-widget-base
-    # ... (add compilation commands here)
+    - cd ../orange-widget-base
+    - python setup.py install --single-version-externally-managed --record installed.txt
 
     # Build orange3
-    # ... (add compilation commands here)
+    - cd ../orange3
+    - python setup.py install --single-version-externally-managed --record installed.txt
 
-    # Install compiled libraries and executables
-    # ... (add cp commands here)
+    # Install compiled libraries
+    - cp -r orange-canvas-core/build/lib* /app/lib
+    - cp -r orange-widget-base/build/lib* /app/lib
+    - cp -r orange3/build/lib* /app/lib
+
+    # Additional steps if needed (e.g., copy data files)
+    # ...
+
